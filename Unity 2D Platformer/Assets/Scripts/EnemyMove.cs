@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Rigidbody2D rigid;
+    void Awake()
     {
-        
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        rigid.velocity = new Vector2(-1, rigid.velocity.y);
     }
 }
