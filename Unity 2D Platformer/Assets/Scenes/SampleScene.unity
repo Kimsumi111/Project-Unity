@@ -568,8 +568,8 @@ GameObject:
   - component: {fileID: 997225749}
   - component: {fileID: 997225748}
   - component: {fileID: 997225751}
-  - component: {fileID: 997225753}
   - component: {fileID: 997225752}
+  - component: {fileID: 997225753}
   m_Layer: 0
   m_Name: "\uC9C0\uB801\uC774_move_0"
   m_TagString: Untagged
@@ -659,7 +659,7 @@ Transform:
   m_GameObject: {fileID: 997225747}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.52591, y: -1.597, z: 0}
+  m_LocalPosition: {x: -27.64, y: -1.597, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -677,6 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextMove: 0
 --- !u!50 &997225752
 Rigidbody2D:
   serializedVersion: 4
@@ -689,9 +690,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -704,8 +705,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &997225753
-BoxCollider2D:
+--- !u!60 &997225753
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -746,9 +747,21 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.8125}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.24926758, y: -0.14802265}
+      - {x: -0.37664032, y: 0.093471766}
+      - {x: -0.43323708, y: 0.28736746}
+      - {x: -0.44392967, y: 0.34544706}
+      - {x: -0.68919754, y: 0.34544694}
+      - {x: -0.68919754, y: 0.038626313}
+      - {x: -0.3541937, y: -0.3742224}
+      - {x: -0.3361845, y: -0.39464104}
+      - {x: -0.3020687, y: -0.4046377}
+      - {x: 0.66276073, y: -0.40625}
+      - {x: 0.718277, y: -0.27880228}
+      - {x: 0.66370773, y: -0.15285575}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1021147102
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,8 +857,8 @@ GameObject:
   - component: {fileID: 1102725448}
   - component: {fileID: 1102725451}
   - component: {fileID: 1102725450}
-  - component: {fileID: 1102725449}
-  m_Layer: 0
+  - component: {fileID: 1102725452}
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,42 +880,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 973003940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!19719996 &1102725449
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102725447}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6acc2fc0b0f473744aab8921e8e33260, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0
-  m_UseDelaunayMesh: 0
 --- !u!483693784 &1102725450
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -2966,6 +2943,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1102725452
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102725447}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &1521719220
 GameObject:
   m_ObjectHideFlags: 0
