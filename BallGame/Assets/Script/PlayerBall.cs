@@ -43,8 +43,9 @@ public class PlayerBall : MonoBehaviour
     {
         //여기서 itemCount가 자동으로 +1 됨...어째서?
         //Debug.Log("Trigger before itemCount: "+ itemCount);
-        AudioSource audio = GetComponent<AudioSource>();
+        
         if (other.tag=="item"){
+            AudioSource audio = GetComponent<AudioSource>();
             //itemCount++;
             //Debug.Log("itemCount: "+ itemCount);
             audio.Play();
