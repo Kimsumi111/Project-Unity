@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Enemy"){
             //Attack
             if(rigid.velocity.y < 0 && transform.position.y > collision.transform.position.y){
-
+                OnAttack(collision.transform); //자신의 collider가 아니라 닿는 collider
             }
             else
                 OnDamaged(collision.transform.position );
@@ -61,7 +61,8 @@ public class PlayerMove : MonoBehaviour
 
     void OnAttack(Transform enemy){
         //point
-
+        //Reaction Force
+        rigid.AddForce(Vector2.up*25, ForceMode2D.Impulse);
         //Enemy Die
         EnemyMove enemyMove = enemy.GetComponent<EnemyMove>();
         enemyMove.OnDamaged();
@@ -73,11 +74,13 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer.color = new Color(1,1,1,0.4f);
         //Reaction Force
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rigid.AddForce(new Vector2(dirc,1)*14, ForceMode2D.Impulse);
+        rigid.AddForce(new Vector2(dirc,1)*10, ForceMode2D.Impulse);
         //Animation
         anim.SetTrigger("doDamaged");
+        //Freeze
         
-        Invoke("OffDamaged", 2);
+        
+        Invoke("OffDamaged", 3);
     }
 
     void OffDamaged(){

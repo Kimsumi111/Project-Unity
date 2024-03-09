@@ -7,7 +7,7 @@ public class EnemyMove : MonoBehaviour
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriteRenderer;
-    CapsuleCollider2D collider;
+    CapsuleCollider2D capsuleCollider;
 
     public int nextMove;
 
@@ -16,7 +16,7 @@ public class EnemyMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        collider = GetComponent<CapsuleCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         Invoke("Think", 3);
     }    
 
@@ -64,12 +64,14 @@ public class EnemyMove : MonoBehaviour
     public void OnDamaged(){
         //Sprite Alpha
         spriteRenderer.color = new Color(1,1,1,0.4f);
+        //Sprtie Flip X Freeze
+        nextMove = 0;
         //Sprite Flip Y
         spriteRenderer.flipY = true;
         //Collider Disable
-        collider.enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
         //Die Effect Jump
-        rigid.AddForce(Vector2.up*10, ForceMode2D.Impulse);
+        rigid.AddForce(Vector2.up*5, ForceMode2D.Impulse);
         //Destroy
         Invoke("DeActive", 3);
     }
