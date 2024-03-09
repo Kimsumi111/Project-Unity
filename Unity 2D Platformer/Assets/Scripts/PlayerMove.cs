@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.normalized.x*0.5f, rigid.velocity.y);
         }
         //Direction Sprite
-        if(Input.GetButtonDown("Horizontal")) {
+        if(Input.GetButton("Horizontal")) {
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;    
         }
         //Player Animation
@@ -46,5 +46,42 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         else if(rigid.velocity.x < maxSpeed*(-1)) //Left Max Speed
             rigid.velocity = new Vector2(maxSpeed*(-1), rigid.velocity.y);
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy"){
+            //Attack
+            if(rigid.velocity.y < 0 && transform.position.y > collision.transform.position.y){
+
+            }
+            else
+                OnDamaged(collision.transform.position );
+        }
+    }
+
+    void OnAttack(Transform enemy){
+        //point
+
+        //Enemy Die
+        EnemyMove enemyMove = enemy.GetComponent<EnemyMove>();
+        enemyMove.OnDamaged();
+    }
+    void OnDamaged(Vector2 targetPos){
+        //Change Layer (Immortal  Active)
+        gameObject.layer = 9;
+        //View Alpha
+        spriteRenderer.color = new Color(1,1,1,0.4f);
+        //Reaction Force
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        rigid.AddForce(new Vector2(dirc,1)*14, ForceMode2D.Impulse);
+        //Animation
+        anim.SetTrigger("doDamaged");
+        
+        Invoke("OffDamaged", 2);
+    }
+
+    void OffDamaged(){
+        gameObject.layer = 8;
+        spriteRenderer.color = new Color(1,1,1,1);
     }
 }
