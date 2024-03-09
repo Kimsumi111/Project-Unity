@@ -58,6 +58,15 @@ public class PlayerMove : MonoBehaviour
                 OnDamaged(collision.transform.position );
         }
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Item"){
+            //Point
+
+            //Deactive Item
+            collision.gameObject.SetActive(false);
+        }               
+    }    
 
     void OnAttack(Transform enemy){
         //point

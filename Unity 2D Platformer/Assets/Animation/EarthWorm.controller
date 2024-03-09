@@ -110,7 +110,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "\uC9C0\uB801\uC774_move_0"
+  m_Name: EarthWorm
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: WalkSpeed
