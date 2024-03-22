@@ -100,20 +100,23 @@ public class PlayerMove : MonoBehaviour
             //Deactive Item
             collision.gameObject.SetActive(false);
         }              
-        else if (collision.gameObject.tag == "Finish"){
+        else if(collision.gameObject.tag == "Finish"){
             //Next Stage
             gameManager.NextStage();
         }
         if(collision.CompareTag("Ladder")){
             isLadder = true;
             canJump = false;
+            if(collision.gameObject.tag == "Climb")
+                canJump = true;
         }        
     } 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Ladder"))
+        if(collision.CompareTag("Ladder")){
             isLadder = false;
             canJump = true;
+        }
     }
 
     void OnAttack(Transform enemy){
