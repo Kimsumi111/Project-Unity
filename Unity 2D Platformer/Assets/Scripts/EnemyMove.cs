@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    Rigidbody2D rigid;
+    Rigidbody2D Rigid;
     Animator anim;
     SpriteRenderer spriteRenderer;
-    CapsuleCollider2D capsuleCollider;
+    Collider2D collid;
 
     public int nextMove;
 
     void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        Rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        collid = GetComponent<Collider2D>();
         Invoke("Think", 3);
     }    
 
@@ -24,9 +24,15 @@ public class EnemyMove : MonoBehaviour
     void FixedUpdate()
     {
         //Move
-        rigid.velocity = new Vector2(nextMove, rigid.velocity.y);
+        if(gameObject.name.Contains("EarthWorm"))
+            Rigid.velocity = new Vector2(nextMove, Rigid.velocity.y);
+        else if(gameObject.name.Contains("Mushroom"))
+            Rigid.velocity = new Vector2(nextMove*1.5f, Rigid.velocity.y);
         //Platform Check
-        Vector2 frontVec = new Vector2(rigid.position.x + nextMove*0.35f, rigid.position.y );
+        //래이캐스트 x축 위치
+        Vector2 frontVec = new Vector2(Rigid.position.x + nextMove*0.35f, Rigid.position.y );
+        
+                
         Debug.DrawRay(frontVec, Vector2.down, new Color(0,1,0));
         RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform")); 
 
@@ -69,9 +75,10 @@ public class EnemyMove : MonoBehaviour
         //Sprite Flip Y
         spriteRenderer.flipY = true;
         //Collider Disable
-        GetComponent<CapsuleCollider2D>().enabled = false;
+        collid.enabled = false;
+        
         //Die Effect Jump
-        rigid.AddForce(Vector2.up*5, ForceMode2D.Impulse);
+        Rigid.AddForce(Vector2.up*5, ForceMode2D.Impulse);
         //Destroy
         Invoke("DeActive", 3);
     }
