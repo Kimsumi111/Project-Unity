@@ -27,7 +27,7 @@ public class EnemyMove : MonoBehaviour
         if(gameObject.name.Contains("EarthWorm"))
             Rigid.velocity = new Vector2(nextMove, Rigid.velocity.y);
         else if(gameObject.name.Contains("Mushroom"))
-            Rigid.velocity = new Vector2(nextMove*1.5f, Rigid.velocity.y);
+            Rigid.velocity = new Vector2(nextMove*1.7f, Rigid.velocity.y);
         //Platform Check
         //래이캐스트 x축 위치
         Vector2 frontVec = new Vector2(Rigid.position.x + nextMove*0.35f, Rigid.position.y );

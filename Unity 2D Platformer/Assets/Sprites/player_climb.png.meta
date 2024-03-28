@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d307f5686638fb488151c69367cec19
+guid: b54390e2458f8594f9f7707466a7f796
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dead 1_0
+      name: player_climb_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 15
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79d5672b63c044247b259c3f96d5ec9f
-      internalID: -664540001
+      spriteID: 224a06d7636902947a29a49d97b11c40
+      internalID: -1001188986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead 1_1
+      name: player_climb_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 15
         y: 0
-        width: 16
-        height: 15
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,8 +171,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 423351d3754fc8f4d9ceb7f102343ec5
-      internalID: -1777303982
+      spriteID: 6912586ffadd2b94c9edab68c859ce38
+      internalID: -719893791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_climb_2
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75550cdfcf490a14ab7fa753e3390da9
+      internalID: -1983291293
       vertices: []
       indices: 
       edges: []
@@ -188,8 +209,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dead 1_0: -664540001
-      Dead 1_1: -1777303982
+      player_climb_0: -1001188986
+      player_climb_1: -719893791
+      player_climb_2: -1983291293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

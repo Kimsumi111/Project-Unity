@@ -8,6 +8,8 @@ TagManager:
   - Item
   - Ladder
   - Climb
+  - Indoor
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Player
   - PlayerDamaged
   - Ladder
-  - 
+  - Water
   - 
   - 
   - 
@@ -59,4 +61,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3557596193
+    locked: 0
+  - name: Water
+    uniqueID: 2138260673
     locked: 0

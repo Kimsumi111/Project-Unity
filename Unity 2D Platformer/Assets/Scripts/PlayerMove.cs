@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+
     }
     void Jump(){
         if(Input.GetButtonDown("Jump"))
@@ -28,8 +29,10 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if ((!isLadder || canJump) && Input.GetButtonDown("Jump")){
+        //Jump
+        if ((!isLadder || canJump) && Input.GetButtonDown("Jump") && !anim.GetBool("IsJumping") && !anim.GetBool("IsFalling")){
             Jump();
+            anim.SetBool("IsJumping", true);
         }
         //Stop Speed
         if(Input.GetButtonUp("Horizontal")) {
@@ -51,16 +54,38 @@ public class PlayerMove : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         rigid.AddForce(Vector2.right*h, ForceMode2D.Impulse);
 
+        //Max Speed
         if(rigid.velocity.x > maxSpeed) //Right Max Speed
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         else if(rigid.velocity.x < maxSpeed*(-1)) //Left Max Speed
             rigid.velocity = new Vector2(maxSpeed*(-1), rigid.velocity.y);
         
+        //Landing Platform
+        if(rigid.velocity.y < 0){
+            anim.SetBool("IsJumping", false);
+            anim.SetBool("IsFalling", true);
+            
+            Debug.DrawRay(rigid.position, Vector3.down, new Color(0,1,0));
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
+
+            if(rayHit.collider != null){
+                if(rayHit.distance < 0.5f)
+                    anim.SetBool("IsFalling", false);
+            }
+        }
         if(isLadder){
-            float v = Input.GetAxis("Vertical");
+            float  v = Input.GetAxis("Vertical");
             rigid.gravityScale = 0;
-            Vector3 ladderMove = new Vector3(0, v*3.5f*Time.deltaTime, 0);
+            Vector3 ladderMove = new Vector3(0, v*4f*Time.deltaTime, 0);
             transform.Translate(ladderMove);
+            
+            if(Input.GetAxis("Vertical") != 0){
+                Debug.Log(Input.GetAxis("Vertical"));
+                anim.SetBool("IsClimbing", true);
+            }
+            else
+                anim.SetBool("IsClimbing", false);
+            
         }
         else{
             rigid.gravityScale = 4f;  
@@ -99,23 +124,28 @@ public class PlayerMove : MonoBehaviour
                 
             //Deactive Item
             collision.gameObject.SetActive(false);
-        }              
+        }
+            
         else if(collision.gameObject.tag == "Finish"){
             //Next Stage
             gameManager.NextStage();
         }
+
         if(collision.CompareTag("Ladder")){
             isLadder = true;
             canJump = false;
+            
             if(collision.gameObject.tag == "Climb")
                 canJump = true;
         }        
     } 
+
     void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.CompareTag("Ladder")){
             isLadder = false;
             canJump = true;
+            anim.SetBool("IsClimbing", false);
         }
     }
 
@@ -162,5 +192,5 @@ public class PlayerMove : MonoBehaviour
     }
     public void VelocityZero(){
         rigid.velocity = Vector2.zero;
-    }     
+    }  
 }

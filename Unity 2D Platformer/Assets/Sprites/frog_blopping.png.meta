@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d83d0c290217134395383abebaf778b
+guid: 48ed5287372b5674f92ed58ebac465e1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,12 +136,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: move_right_0
+      name: frog_blopping_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 2
-        width: 11
+        x: 0
+        y: 0
+        width: 25
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ca9c6d9af171c2469983bdce44ae834
-      internalID: 2100905476
+      spriteID: 284a637a6ce1c4041a12fa5f42a269fe
+      internalID: -37866995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: move_right_1
+      name: frog_blopping_1
       rect:
         serializedVersion: 2
-        x: 24
-        y: 2
-        width: 12
-        height: 16
+        x: 25
+        y: 0
+        width: 25
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,8 +171,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d838e29aaf3db304383491f41d28413e
-      internalID: 1369024373
+      spriteID: 93e918e501d085d43997d6209b140885
+      internalID: -1895321917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frog_blopping_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 309e7a3463e97cb4e94c771d9834cef2
+      internalID: 459004270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frog_blopping_3
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a85ddc6fc8f91d04a8468a8e7872a0db
+      internalID: 111285259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frog_blopping_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e254c12b532e8f40b658304c51c9117
+      internalID: 1827003696
       vertices: []
       indices: 
       edges: []
@@ -188,8 +251,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      move_right_0: 2100905476
-      move_right_1: 1369024373
+      frog_blopping_0: -37866995
+      frog_blopping_1: -1895321917
+      frog_blopping_2: 459004270
+      frog_blopping_3: 111285259
+      frog_blopping_4: 1827003696
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
