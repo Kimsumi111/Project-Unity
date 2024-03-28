@@ -9,10 +9,16 @@ public class PlayerMove : MonoBehaviour
     public float jumpPower;
     public bool isLadder = false;
     public bool canJump = true;
-    public Rigidbody2D rigid;
-    SpriteRenderer spriteRenderer;
-    CapsuleCollider2D capsuleCollider;
-    Animator anim;
+    public float dashingPower = 24f;
+    public float dashingTime= 0.2f;
+    public float dashingCooldown = 1f;
+    private bool canDash = true;
+    private bool isDashing;
+    [SerializeField] private Rigidbody2D rigid;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private CapsuleCollider2D capsuleCollider;
+    [SerializeField] private Animator anim;
+    [SerializeField] private TrailRenderer tr;
 
     void Awake()
     {
@@ -29,6 +35,10 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        //Dash 중 행동 방지
+        if (isDashing){
+            return;
+        }
         //Jump
         if ((!isLadder || canJump) && Input.GetButtonDown("Jump") && !anim.GetBool("IsJumping") && !anim.GetBool("IsFalling")){
             Jump();
@@ -47,9 +57,18 @@ public class PlayerMove : MonoBehaviour
             anim.SetBool("IsWalking", false);
         else
             anim.SetBool("IsWalking", true);
+        //Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash){
+            StartCoroutine(Dash());
+        }
     }
     void FixedUpdate()
     {
+        //Dash 중 행동 방지
+        if (isDashing){
+            return;
+        }
+
         //Move By Key Control
         float h = Input.GetAxisRaw("Horizontal");
         rigid.AddForce(Vector2.right*h, ForceMode2D.Impulse);
@@ -192,5 +211,22 @@ public class PlayerMove : MonoBehaviour
     }
     public void VelocityZero(){
         rigid.velocity = Vector2.zero;
+    }
+    private IEnumerator Dash(){
+        canDash = false;
+        isDashing = true;
+        rigid.gravityScale = 0f;
+        if(spriteRenderer.flipX == false)
+            rigid.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        else
+            rigid.velocity = new Vector2(transform.localScale.x * dashingPower*(-1), 0f);
+        tr.emitting = true;
+        
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        rigid.gravityScale = 4f;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }  
 }
