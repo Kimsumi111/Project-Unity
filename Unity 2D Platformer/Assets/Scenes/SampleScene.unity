@@ -17440,6 +17440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911862007}
   - component: {fileID: 911862010}
+  - component: {fileID: 911862011}
   - component: {fileID: 911862009}
   - component: {fileID: 911862008}
   m_Layer: 0
@@ -17599,6 +17600,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &911862011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911862006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a00119a8969d8142aa83bbcc169b32d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
 --- !u!1 &912410923
 GameObject:
   m_ObjectHideFlags: 0
@@ -77472,7 +77486,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -77489,14 +77503,14 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 1515757774, guid: ccb725c3e5ccee342b8f48610bc3b261, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 2113881419, guid: ccb725c3e5ccee342b8f48610bc3b261, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 1177806020, guid: fe59b68b2c09db24d90b0f623157333d, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1515757774, guid: ccb725c3e5ccee342b8f48610bc3b261, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 7
     m_Data:
