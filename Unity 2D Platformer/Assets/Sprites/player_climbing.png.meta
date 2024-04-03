@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fe59b68b2c09db24d90b0f623157333d
+guid: c52644c0b656e5b46a313ca381ad7df0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,49 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grass_ladder_0
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f99e48f2bca0b3a4f978a98768f3b6f6
-      internalID: -526897219
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grass_ladder_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0ea1ff6b747cac4e9f25f140eb81619
-      internalID: 1350410347
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grass_ladder_2
+      name: player_climbing_0
       rect:
         serializedVersion: 2
         x: 0
@@ -192,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5a1c5b6e46fe31438f197195a28878d
-      internalID: -1231058048
+      spriteID: 7e5e4e1cd8d2a6845b6d9e46e7709b00
+      internalID: 599604977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_ladder_3
+      name: player_climbing_1
       rect:
         serializedVersion: 2
         x: 16
@@ -213,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 845ae8e1df2e8854eb3fbcc7d3468730
-      internalID: -2038860258
+      spriteID: b4e70b89e6476014184cc942cce82e99
+      internalID: 23559536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_ladder_4
+      name: player_climbing_2
       rect:
         serializedVersion: 2
         x: 32
@@ -234,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb488a1189e123146b822337ef3b18a4
-      internalID: -1647571013
+      spriteID: cc6620d3a875ad74db13188cb24a46f9
+      internalID: 1314999980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_ladder_5
+      name: player_climbing_3
       rect:
         serializedVersion: 2
         x: 48
@@ -255,14 +213,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6d02899cdcf6e44785ddb9ea6b0660d
-      internalID: -1415094258
+      spriteID: 9247a7fb11d978c449c38102256c88fc
+      internalID: 1327358450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass_ladder_6
+      name: player_climbing_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f6a70a624e68c4389009a9eda6ee32
+      internalID: 1164774117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_climbing_5
       rect:
         serializedVersion: 2
         x: 80
@@ -276,8 +255,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82976a13d570d924a932ceb8b8cf0805
-      internalID: 1177806020
+      spriteID: 942f2dbe8a4311c45b3d9e22867c64e2
+      internalID: -119662028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_climbing_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f50b3d5b653dcd41b0378dc4fbfa79c
+      internalID: 845481967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_climbing_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 594673dc5b0aefa48baa0c106acc2314
+      internalID: 861533274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_climbing_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 849776bae3fd15642adb2a8a1324bb97
+      internalID: -450519747
       vertices: []
       indices: 
       edges: []
@@ -293,13 +335,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      grass_ladder_0: -526897219
-      grass_ladder_1: 1350410347
-      grass_ladder_2: -1231058048
-      grass_ladder_3: -2038860258
-      grass_ladder_4: -1647571013
-      grass_ladder_5: -1415094258
-      grass_ladder_6: 1177806020
+      player_climbing_0: 599604977
+      player_climbing_1: 23559536
+      player_climbing_2: 1314999980
+      player_climbing_3: 1327358450
+      player_climbing_4: 1164774117
+      player_climbing_5: -119662028
+      player_climbing_6: 845481967
+      player_climbing_7: 861533274
+      player_climbing_8: -450519747
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

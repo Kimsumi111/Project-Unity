@@ -9,9 +9,9 @@ public class PlayerMove : MonoBehaviour
     public float jumpPower;
     public bool isLadder = false;
     public bool canJump = true;
-    public float dashingPower = 24f;
+    public float dashingPower = 20f;
     public float dashingTime= 0.2f;
-    public float dashingCooldown = 1f;
+    public float dashingCooldown = 2f;
     private bool canDash = true;
     private bool isDashing;
     [SerializeField] private Rigidbody2D rigid;
@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private CapsuleCollider2D capsuleCollider;
     [SerializeField] private Animator anim;
     [SerializeField] private TrailRenderer tr;
+    RaycastHit2D rayHit;
 
     void Awake()
     {
@@ -85,7 +86,7 @@ public class PlayerMove : MonoBehaviour
             anim.SetBool("IsFalling", true);
             
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0,1,0));
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
+            rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
 
             if(rayHit.collider != null){
                 if(rayHit.distance < 0.5f)
@@ -95,21 +96,23 @@ public class PlayerMove : MonoBehaviour
         if(isLadder){
             float  v = Input.GetAxis("Vertical");
             rigid.gravityScale = 0;
-            Vector3 ladderMove = new Vector3(0, v*4f*Time.deltaTime, 0);
+            Vector3 ladderMove = new Vector3(0, v*3.5f*Time.deltaTime, 0);
             transform.Translate(ladderMove);
+            anim.SetBool("IsClimbing", true);     
             
-            if(Input.GetAxis("Vertical") != 0){
-                Debug.Log(Input.GetAxis("Vertical"));
-                anim.SetBool("IsClimbing", true);
+            if(Input.GetAxis("Vertical") == 0){
+                anim.speed = 0f;
             }
             else
-                anim.SetBool("IsClimbing", false);
-            
+                anim.speed = 1f;
+
+                
         }
         else{
             rigid.gravityScale = 4f;  
+            anim.speed = 1f;
         }
-        //만약 플레이어가 클라임 벽돌 위에 있을 경우 점프 가능. 아니면 불가능.
+
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -149,7 +152,7 @@ public class PlayerMove : MonoBehaviour
             //Next Stage
             gameManager.NextStage();
         }
-
+        //만약 플레이어가 클라임 벽돌 위에 있을 경우 점프 가능. 아니면 불가능.
         if(collision.CompareTag("Ladder")){
             isLadder = true;
             canJump = false;
@@ -164,6 +167,7 @@ public class PlayerMove : MonoBehaviour
         if(collision.CompareTag("Ladder")){
             isLadder = false;
             canJump = true;
+            gameObject.layer = 8;
             anim.SetBool("IsClimbing", false);
         }
     }
