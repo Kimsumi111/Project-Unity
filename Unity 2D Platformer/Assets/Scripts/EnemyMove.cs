@@ -59,14 +59,13 @@ public class EnemyMove : MonoBehaviour
         //보통 재귀함수를 맨 아래에 쓴다.   
     }
 
-    void Turn(){
+    public void Turn(){
         nextMove *= -1;
         spriteRenderer.flipX = nextMove == 1;
 
         CancelInvoke();
         Invoke("Think",3);
     }
-
     public void OnDamaged(){
         //Sprite Alpha
         spriteRenderer.color = new Color(1,1,1,0.4f);
@@ -83,7 +82,7 @@ public class EnemyMove : MonoBehaviour
         Invoke("DeActive", 3);
     }
 
-    void DeActive(){
+    public void DeActive(){
         gameObject.SetActive(false);
     }
 }
