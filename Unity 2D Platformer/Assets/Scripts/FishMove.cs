@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishMove : MonoBehaviour
 {
     Rigidbody2D rigid;
-    public float hopPower;
+    public Hop hop;
     private bool movingRight = true; // 오른쪽으로 이동 중인지 여부
 
     void Start()
@@ -30,6 +30,7 @@ public class FishMove : MonoBehaviour
                     yield return null;
                 }
                 transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
+
             }
             // 2. 스케일 변경 (-로)
             transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
@@ -39,7 +40,7 @@ public class FishMove : MonoBehaviour
             // 3. 왼쪽으로 이동
             if (!movingRight)
             {
-                float targetX = transform.position.x - 2f; // 이동할 위치
+                float targetX = transform.position.x - 3f; // 이동할 위치
                 float elapsedTime = 0f;
                 while (elapsedTime < 3f)
                 {

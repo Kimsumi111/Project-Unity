@@ -1,26 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Hop : MonoBehaviour
 {
-    public float initialSpeed = 10f;
-    public float angle = 45f;
-    private Vector3 velocity;
-    void Start()
-    {
-        // 각도를 라디안으로 변환
-        float radianAngle = angle * Mathf.Deg2Rad;
+    private Vector3 startPos, endPos;
+    protected float timer; //땅에 닿기까지 걸리는 시간
+    protected float timeToFloor;
 
-        // 초기 속도 벡터 계산
-        velocity = new Vector3(initialSpeed * Mathf.Cos(radianAngle), initialSpeed * Mathf.Sin(radianAngle), 0);
+    protected static Vector3 Parabola(Vector3 start, Vector3 end, float height, float t){
+        Func<float, float> f = x => -4 * height * x *x + 4 * height * x;
+
+        var mid = Vector3.Lerp(start, end, t);
+
+        return new Vector3(mid.x, f(t) + Mathf.Lerp(start.y, end.y, t), mid.z);
     }
-    void Update()
+    protected IEnumerator Move(){
+        while(true){
+            timer = 0;
+            while(transform.position.y >= startPos.y){
+                timer += Time.deltaTime;
+                Vector3 tempPos = Parabola(startPos, endPos, 5, timer);
+                transform.position = tempPos;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+    private void Start()
     {
-        // 포물선 운동 적용
-        transform.position += velocity * Time.deltaTime;
-
-        // 시간에 따라 속도를 변화시켜 포물선 운동 구현
-        velocity.y -= Time.deltaTime * 9.8f;
+        startPos = transform.position;
+        endPos = startPos + new Vector3(5, 0, 0);
+        StartCoroutine("Move");
     }
 }
+
+
