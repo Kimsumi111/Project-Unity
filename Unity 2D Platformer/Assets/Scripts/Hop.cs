@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Hop : MonoBehaviour
 {
-    public float speed = 3f; // 물고기의 이동 속도
-    public float jumpForce = 5f; // 물고기의 점프 힘
-    public float jumpInterval = 2f; // 점프 간격
-    public float directionChangeInterval = 5f; // 이동 방향 변경 간격
+    public float speed; // 물고기의 이동 속도
+    public float jumpForce; // 물고기의 점프 힘
+    public float jumpInterval; // 점프 간격
+    public float directionChangeInterval; // 이동 방향 변경 간격
 
 
     private Rigidbody2D rb;

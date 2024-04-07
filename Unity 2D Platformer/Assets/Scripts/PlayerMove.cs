@@ -178,8 +178,13 @@ public class PlayerMove : MonoBehaviour
         //Reaction Force
         rigid.AddForce(Vector2.up*25, ForceMode2D.Impulse);
         //Enemy Die
-        EnemyMove enemyMove = enemy.GetComponent<EnemyMove>();
-        enemyMove.OnDamaged();
+        EnemyDie enemyDie = enemy.GetComponent<EnemyDie>();
+        if(enemyDie != null){
+            enemyDie.OnDamaged();
+        }
+        else{
+            Debug.LogWarning("EnemyDie 스크립트가 없습니다.");
+        }
     }
     void OnDamaged(Vector2 targetPos){
         //Health Down
