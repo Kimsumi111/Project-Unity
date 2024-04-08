@@ -4,22 +4,58 @@ using UnityEngine;
 
 public class FrogMove : EnemyMove
 {
-    public float jumpForce, nextJumpTime;
-    //public float nextJumpTime;
+    [SerializeField] Collider2D walkCollide;
+    [SerializeField] Collider2D jumpCollide;
+    public RaycastHit2D rayHit2;
+    public float jumpForce;
 
     protected override void Awake()
     {
         base.Awake();
-        Debug.Log("점프 시작함다");
-    }   
-    protected override void Turn(){
-        base.Turn();
-        Invoke("Jump", nextJumpTime);
+        walkCollide.enabled = true;
+        jumpCollide.enabled = false;
     }
+    protected override void Think(){
+        base.Think();
+        if(!anim.GetBool("isJumping"))
+            Jump();
+        
+    }
+    protected override void FixedUpdate(){
+        base.FixedUpdate();
+
+        Vector2 downVec = new Vector2(Rigid.position.x, Rigid.position.y - 1f); 
+        Debug.DrawRay(downVec, Vector2.down, new Color(0,1,0));
+        rayHit2 = Physics2D.Raycast(downVec, Vector3.down, 3, LayerMask.GetMask("Platform", "Ladder"));
+        if(rayHit2.collider == null){
+            Turn();
+        }
+    }   
 
     void Jump(){
-        Debug.Log("점프함다");
         // 점프
+        anim.SetBool("isJumping", true);
         Rigid.AddForce(Vector2.up*jumpForce, ForceMode2D.Impulse);
+        Invoke("StopJumpping", 0.7f);
+    }
+    void StopJumpping(){
+        anim.SetBool("isJumping", false);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Platform")){
+            anim.SetBool("isJumping", false);
+        }
+    }
+
+
+    public void ActivateWalkCollide(){
+        walkCollide.enabled = true;
+        jumpCollide.enabled = false;
+    }
+    public void ActivateJumpCollide(){
+        walkCollide.enabled = false;
+        jumpCollide.enabled = true;
     }
 }

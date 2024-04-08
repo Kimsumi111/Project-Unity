@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyDie : MonoBehaviour
 {
     public bool filpXFreeze;
+
     public void OnDamaged(){
         //Sprite Alpha
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -14,23 +15,34 @@ public class EnemyDie : MonoBehaviour
         spriteRenderer.flipY = true;
         
         //Collider Disable
-        Collider2D collid= GetComponent<Collider2D>();
-        collid.enabled = false;
+        Collider2D[] colliders = GetComponents<Collider2D>(); 
 
-        if (filpXFreeze){
-            EnemyMove enemyMove = GetComponent<EnemyMove>();
-            if (enemyMove != null)
-                enemyMove.nextMove = 0;  
-            else
-                Debug.LogWarning("EnemyMove 스크립트가 없습니다.");
+        foreach (Collider2D collider in colliders){
+            collider.enabled = false;
         }
         
+        DieEffectJump();
+
+        MoveControl();
+
+        //Destroy
+        Invoke("DeActive", 3);
+    }
+    public void DieEffectJump(){
         //Die Effect Jump
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         rigid.AddForce(Vector2.up*5, ForceMode2D.Impulse);
+    }
+    protected virtual void MoveControl(){
+        if (filpXFreeze){
+            EnemyMove enemyMove = GetComponent<EnemyMove>();
+            if (enemyMove != null)
+                enemyMove.enabled = false;  
+            else
+                Debug.LogWarning("EnemyMove 스크립트가 없습니다.");
+        }        
         
-        //Destroy
-        Invoke("DeActive", 3);
+
     }
 
     public void DeActive(){

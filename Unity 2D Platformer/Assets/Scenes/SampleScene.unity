@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &49275215
 SpriteRenderer:
@@ -931,6 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &83237005
 SpriteRenderer:
@@ -1108,6 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &83382016
 Animator:
@@ -2452,6 +2455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &139152100
 SpriteRenderer:
@@ -6718,8 +6722,9 @@ GameObject:
   - component: {fileID: 356257259}
   - component: {fileID: 356257260}
   - component: {fileID: 356257254}
-  - component: {fileID: 356257253}
   - component: {fileID: 356257258}
+  - component: {fileID: 356257261}
+  - component: {fileID: 356257253}
   m_Layer: 7
   m_Name: Frog
   m_TagString: Enemy
@@ -6905,7 +6910,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bffd7a6bf2330d4c80dd5b356710ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
+  walkCollide: {fileID: 356257258}
+  jumpCollide: {fileID: 356257261}
   jumpForce: 5
   nextJumpTime: 3
 --- !u!114 &356257260
@@ -6921,6 +6929,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filpXFreeze: 0
+--- !u!60 &356257261
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356257252}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5625, y: 0.9375}
+    newSize: {x: 1.5625, y: 0.9375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.12026596, y: 0.45674968}
+      - {x: -0.12823105, y: 0.25075102}
+      - {x: -0.31323242, y: -0.007249117}
+      - {x: -0.31723404, y: -0.116737604}
+      - {x: -0.4377613, y: -0.20874071}
+      - {x: -0.5195141, y: -0.39343476}
+      - {x: -0.51968575, y: -0.45172715}
+      - {x: -0.47462463, y: -0.4516089}
+      - {x: -0.47441483, y: -0.40110588}
+      - {x: -0.37215042, y: -0.37791538}
+      - {x: -0.09325981, y: -0.12864852}
+      - {x: 0.18551064, y: -0.12088704}
+      - {x: 0.34858894, y: -0.04465866}
+      - {x: 0.4442253, y: 0.02420783}
+      - {x: 0.45853996, y: 0.12236357}
+      - {x: 0.5158253, y: 0.11970544}
+      - {x: 0.5158253, y: 0.11970544}
+      - {x: 0.5168228, y: 0.32429194}
+      - {x: 0.39723587, y: 0.45674968}
+  m_UseDelaunayMesh: 0
 --- !u!1 &356718449
 GameObject:
   m_ObjectHideFlags: 0
@@ -7032,6 +7104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &356718454
 Animator:
@@ -8611,6 +8684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &432913369
 Animator:
@@ -9519,6 +9593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &474903006
 Animator:
@@ -12095,6 +12170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &591704823
 SpriteRenderer:
@@ -12641,6 +12717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &610845868
 SpriteRenderer:
@@ -13386,6 +13463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &656929073
 Animator:
@@ -14660,6 +14738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &740847095
 Animator:
@@ -15189,6 +15268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &780847396
 SpriteRenderer:
@@ -16788,6 +16868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &839202606
 SpriteRenderer:
@@ -17345,6 +17426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &868066179
 SpriteRenderer:
@@ -17522,6 +17604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &869126275
 Animator:
@@ -17980,6 +18063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &906152986
 Animator:
@@ -18505,6 +18589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &912909241
 SpriteRenderer:
@@ -23257,6 +23342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &979280814
 SpriteRenderer:
@@ -24059,6 +24145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1018664007
 Animator:
@@ -24388,6 +24475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1028678514
 SpriteRenderer:
@@ -25039,6 +25127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1071277579
 SpriteRenderer:
@@ -25822,6 +25911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1093000693
 SpriteRenderer:
@@ -31205,6 +31295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1113886542
 SpriteRenderer:
@@ -31571,6 +31662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1131301066
 SpriteRenderer:
@@ -32463,6 +32555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!50 &1163534156
 Rigidbody2D:
@@ -32899,6 +32992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1191217611
 Animator:
@@ -33144,6 +33238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1195833353
 SpriteRenderer:
@@ -33321,6 +33416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1205727669
 Animator:
@@ -34332,6 +34428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1254083156
 Animator:
@@ -34861,6 +34958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1264878751
 SpriteRenderer:
@@ -37245,6 +37343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1279119849
 Animator:
@@ -37727,6 +37826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1286097340
 Animator:
@@ -39370,6 +39470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1351629324
 SpriteRenderer:
@@ -39594,6 +39695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1354558121
 SpriteRenderer:
@@ -40102,6 +40204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1364647187
 SpriteRenderer:
@@ -46153,6 +46256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1473352496
 Animator:
@@ -47271,6 +47375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1542828409
 SpriteRenderer:
@@ -47960,6 +48065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1562395596
 SpriteRenderer:
@@ -50987,6 +51093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!70 &1630044142
 CapsuleCollider2D:
@@ -51350,6 +51457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1631699646
 SpriteRenderer:
@@ -52610,6 +52718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1666637414
 Animator:
@@ -52855,6 +52964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1680228896
 SpriteRenderer:
@@ -53221,6 +53331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1683399573
 SpriteRenderer:
@@ -53445,6 +53556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!212 &1684094345
 SpriteRenderer:
@@ -54216,6 +54328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1728924334
 Animator:
@@ -54698,6 +54811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1738534719
 Animator:
@@ -55264,6 +55378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1747672167
 Animator:
@@ -56268,6 +56383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &1762048533
 Animator:
@@ -78071,6 +78187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849089ddf69b654292ba479dcf8701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   nextMove: 0
 --- !u!95 &2029062489
 Animator:

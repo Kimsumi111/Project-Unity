@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+    public Vector3 scale;
     protected Rigidbody2D Rigid;
-    Animator anim;
+    public Animator anim;
+    public RaycastHit2D rayHit;
     SpriteRenderer spriteRenderer;
     Collider2D collid;
 
@@ -30,21 +32,20 @@ public class EnemyMove : MonoBehaviour
             Rigid.velocity = new Vector2(nextMove*1.7f, Rigid.velocity.y);
         else if(gameObject.name.Contains("Frog"))
             Rigid.velocity = new Vector2(nextMove * 0.5f, Rigid.velocity.y);
+        
         //Platform Check
         //래이캐스트 x축 위치
-        Vector2 frontVec = new Vector2(Rigid.position.x + nextMove*0.35f, Rigid.position.y );
-        
-                
+        Vector2 frontVec = new Vector2(Rigid.position.x + nextMove*0.35f, Rigid.position.y );        
         Debug.DrawRay(frontVec, Vector2.down, new Color(0,1,0));
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform", "Ladder")); 
+        rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform", "Ladder")); 
 
         if(rayHit.collider == null){
-            if(Mathf.Abs(Rigid.velocity.y) < 0.1 )
+            if(Mathf.Abs(Rigid.velocity.y) == 0 )
                 Turn();
         }
     }
     //재귀 함수 
-    void Think(){
+    protected virtual void Think(){
         //Set Next Active
         int[] arr = {-1, 1};
         nextMove = arr[Random.Range(0, arr.Length)];
@@ -70,10 +71,10 @@ public class EnemyMove : MonoBehaviour
         //보통 재귀함수를 맨 아래에 쓴다.   
     }
 
-    protected virtual void Turn(){
+    public void Turn(){
         nextMove *= -1;
         
-        Vector3 scale = transform.localScale;
+        scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
         
