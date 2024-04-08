@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FrogMove : EnemyMove
 {
-    [SerializeField] Collider2D walkCollide;
-    [SerializeField] Collider2D jumpCollide;
+    public Collider2D walkCollide;
+    public Collider2D jumpCollide;
     public RaycastHit2D rayHit2;
     public float jumpForce;
 
     protected override void Awake()
     {
         base.Awake();
-        walkCollide.enabled = true;
+        walkCollide.enabled = false;
         jumpCollide.enabled = false;
     }
     protected override void Think(){
@@ -24,7 +24,7 @@ public class FrogMove : EnemyMove
     protected override void FixedUpdate(){
         base.FixedUpdate();
 
-        Vector2 downVec = new Vector2(Rigid.position.x, Rigid.position.y - 1f); 
+        Vector2 downVec = new Vector2(Rigid.position.x + nextMove*0.05f, Rigid.position.y - 1f); 
         Debug.DrawRay(downVec, Vector2.down, new Color(0,1,0));
         rayHit2 = Physics2D.Raycast(downVec, Vector3.down, 3, LayerMask.GetMask("Platform", "Ladder"));
         if(rayHit2.collider == null){
@@ -48,7 +48,6 @@ public class FrogMove : EnemyMove
             anim.SetBool("isJumping", false);
         }
     }
-
 
     public void ActivateWalkCollide(){
         walkCollide.enabled = true;
