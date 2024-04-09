@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public Vector3 scale;
+    public int[] arr = {-1, 1};
     protected Rigidbody2D Rigid;
     public Animator anim;
     public RaycastHit2D rayHit;
@@ -47,7 +48,6 @@ public class EnemyMove : MonoBehaviour
     //재귀 함수 
     protected virtual void Think(){
         //Set Next Active
-        int[] arr = {-1, 1};
         nextMove = arr[Random.Range(0, arr.Length)];
         
         if(!gameObject.name.Contains("Frog"))
@@ -74,9 +74,11 @@ public class EnemyMove : MonoBehaviour
     public void Turn(){
         nextMove *= -1;
         
-        scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        if(nextMove != 0){
+            scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+        }
         
         CancelInvoke();
         Invoke("Think",3);

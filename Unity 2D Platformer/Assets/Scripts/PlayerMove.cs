@@ -27,7 +27,6 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
-
     }
     void Jump(){
         if(Input.GetButtonDown("Jump"))

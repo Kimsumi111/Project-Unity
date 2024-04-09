@@ -5,7 +5,12 @@ using UnityEngine;
 public class EnemyDie : MonoBehaviour
 {
     public bool filpXFreeze;
+    EnemyMove enemyMove;
 
+    void Start()
+    {
+        enemyMove = GetComponent<EnemyMove>();
+    }
     public void OnDamaged(){
         //Sprite Alpha
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,6 +25,7 @@ public class EnemyDie : MonoBehaviour
         foreach (Collider2D collider in colliders){
             collider.enabled = false;
         }
+        enemyMove.nextMove = 0;
         
         DieEffectJump();
 
@@ -34,15 +40,10 @@ public class EnemyDie : MonoBehaviour
         rigid.AddForce(Vector2.up*5, ForceMode2D.Impulse);
     }
     protected virtual void MoveControl(){
+        enemyMove.arr = new int[] { 0 };
         if (filpXFreeze){
-            EnemyMove enemyMove = GetComponent<EnemyMove>();
-            if (enemyMove != null)
-                enemyMove.enabled = false;  
-            else
-                Debug.LogWarning("EnemyMove 스크립트가 없습니다.");
+            enemyMove.anim.SetInteger("WalkSpeed", 0);
         }        
-        
-
     }
 
     public void DeActive(){

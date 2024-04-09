@@ -8,6 +8,7 @@ public class FrogMove : EnemyMove
     public Collider2D jumpCollide;
     public RaycastHit2D rayHit2;
     public float jumpForce;
+    public bool isDead = false;
 
     protected override void Awake()
     {
@@ -17,9 +18,11 @@ public class FrogMove : EnemyMove
     }
     protected override void Think(){
         base.Think();
-        if(!anim.GetBool("isJumping"))
-            Jump();
-        
+        if(!anim.GetBool("isJumping")){
+            if(isDead == false){
+                Jump();
+            }
+        }        
     }
     protected override void FixedUpdate(){
         base.FixedUpdate();
@@ -50,8 +53,11 @@ public class FrogMove : EnemyMove
     }
 
     public void ActivateWalkCollide(){
-        walkCollide.enabled = true;
-        jumpCollide.enabled = false;
+        if(!isDead){
+            walkCollide.enabled = true;
+            jumpCollide.enabled = false;
+        }
+        
     }
     public void ActivateJumpCollide(){
         walkCollide.enabled = false;
