@@ -13,8 +13,14 @@ public class CrocodileTrigger : MonoBehaviour
             CrocodileJump crocodileJump = crocodile.GetComponent<CrocodileJump>();
 
             Debug.Log("점프 접근 완료");
-            crocodileJump.enabled = true;
-            crocodileJump.GetPlayerPos();          
+            if(crocodileJump != null){
+                crocodileJump.enabled = true;
+                crocodileJump.GetPlayerPos();
+            }
+            else{
+                Debug.LogError("크로코다일점프 스크립트 없음");
+            }
+                      
         }        
     }
 }
