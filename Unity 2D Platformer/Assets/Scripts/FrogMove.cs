@@ -27,11 +27,14 @@ public class FrogMove : EnemyMove
     protected override void FixedUpdate(){
         base.FixedUpdate();
 
+        Rigid.velocity = new Vector2(nextMove * 0.5f, Rigid.velocity.y);
+
         Vector2 downVec = new Vector2(Rigid.position.x + nextMove*0.05f, Rigid.position.y - 1f); 
         Debug.DrawRay(downVec, Vector2.down, new Color(0,1,0));
         rayHit2 = Physics2D.Raycast(downVec, Vector3.down, 3, LayerMask.GetMask("Platform", "Ladder"));
         if(rayHit2.collider == null){
-            Turn();
+            if (Mathf.Abs(Rigid.velocity.y) == 0)
+                Turn();
         }
     }   
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CrocodileJump : MonoBehaviour
 {
-    public float jumpTime;
-    public float jumpSpeed;
+    [SerializeField] private float jumpTime = 1f;
+    [SerializeField] private float jumpSpeed = 3f;
     private float playerPosY;
 
     public void GetPlayerPos(){

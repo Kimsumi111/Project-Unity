@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public Vector3 scale;
-    public int[] arr = {-1, 1};
+    public int[] nextMoveArr = {-1, 1};
     protected Rigidbody2D Rigid;
     public Animator anim;
     public RaycastHit2D rayHit;
@@ -26,29 +26,16 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     protected virtual void FixedUpdate()
     {
-        //Move
-        if(gameObject.name.Contains("EarthWorm"))
-            Rigid.velocity = new Vector2(nextMove, Rigid.velocity.y);
-        else if(gameObject.name.Contains("Mushroom"))
-            Rigid.velocity = new Vector2(nextMove*1.7f, Rigid.velocity.y);
-        else if(gameObject.name.Contains("Frog"))
-            Rigid.velocity = new Vector2(nextMove * 0.5f, Rigid.velocity.y);
-        
         //Platform Check
         //래이캐스트 x축 위치
         Vector2 frontVec = new Vector2(Rigid.position.x + nextMove*0.35f, Rigid.position.y );        
         Debug.DrawRay(frontVec, Vector2.down, new Color(0,1,0));
         rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform", "Ladder")); 
-
-        if(rayHit.collider == null){
-            if(Mathf.Abs(Rigid.velocity.y) == 0 )
-                Turn();
-        }
     }
     //재귀 함수 
     protected virtual void Think(){
         //Set Next Active
-        nextMove = arr[Random.Range(0, arr.Length)];
+        nextMove = nextMoveArr[Random.Range(0, nextMoveArr.Length)];
         
         if(!gameObject.name.Contains("Frog"))
         //Sprite Animation
@@ -64,7 +51,6 @@ public class EnemyMove : MonoBehaviour
             }
         }
            
-        
         //Recursive
         float nextThinkTime = Random.Range(0.5f,3f);
         Invoke("Think", nextThinkTime); 

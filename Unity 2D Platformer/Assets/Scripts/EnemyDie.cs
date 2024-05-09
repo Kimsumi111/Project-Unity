@@ -40,7 +40,7 @@ public class EnemyDie : MonoBehaviour
         rigid.AddForce(Vector2.up*5, ForceMode2D.Impulse);
     }
     protected virtual void MoveControl(){
-        enemyMove.arr = new int[] { 0 };
+        enemyMove.nextMoveArr = new int[] { 0 };
         if (filpXFreeze){
             enemyMove.anim.SetInteger("WalkSpeed", 0);
         }        

@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class CrocodileTrigger : MonoBehaviour
 {
-    public CrocodileJump crocodileJump;
+    [SerializeField] private GameObject crocodile;
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")){
             Debug.Log("플레이어 닿았다");
-            GameObject crocodile = gameObject.transform.parent.gameObject;
-            crocodileJump = crocodile.GetComponent<CrocodileJump>();
+            CrocodileJump crocodileJump = crocodile.GetComponent<CrocodileJump>();
 
             Debug.Log("점프 접근 완료");
             if(crocodileJump != null){
-                crocodileJump.enabled = true;
                 crocodileJump.GetPlayerPos();
             }
             else{

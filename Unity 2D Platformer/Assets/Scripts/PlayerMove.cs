@@ -58,7 +58,7 @@ public class PlayerMove : MonoBehaviour
         else
             anim.SetBool("IsWalking", true);
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash){
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && canDash){
             StartCoroutine(Dash());
         }
     }
